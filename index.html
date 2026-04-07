@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saini hotel & restaurant</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            /* Background image ko remove kar sakte hain agar hero slider full screen chahiye */
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        header {
+            width: 100%;
+            height: 70px;
+            background-color: rgb(3, 51, 106);
+            position: relative;
+            z-index: 10;
+            position: fixed;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 5px 20px;
+        }
+
+        .navbar img {
+            height: 60px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: rgb(122, 186, 243);
+            padding: 8px;
+            margin: 7px;
+            font-weight: 600;
+            font-size: 17px;
+            text-shadow: 2px 1px 2px black;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgb(151, 180, 248);
+            text-shadow: 2px 1px 2px black;
+        }
+
+        .logo h2 {
+            font-size: 20px;
+        }
+
+        .navbar li a:hover {
+            background-color: yellow;
+            border: 5px double black;
+            color: black;
+            text-shadow: none;
+            border-radius:8px;
+        }
+        
+        #selected {
+            background-color: yellow;
+            border: 5px double black;
+            color: black;
+            text-shadow: none;
+            border-radius: 12px;
+            margin: 3px;
+        }
+
+        /* ===== HERO SLIDER FIX ===== */
+        .hero-section {
+            width: 100%;
+            height: calc(100vh - 120px); /* Header aur footer ki height minus ki hai */
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-slides {
+            display: flex;
+            width: 400%; /* Kyunki 4 images hain */
+            height: 100%;
+            animation: slider 16s infinite ease-in-out;
+        }
+
+        .hero-slides img {
+            width: 25%; /* 100% divided by 4 images */
+            height: 100%;
+            object-fit: cover; /* Image stretch nahi hogi, properly fill karegi */
+        }
+
+        /* Slider Animation Logic */
+        @keyframes slider {
+            0% { transform: translateX(0%); }
+            20% { transform: translateX(0%); }
+            25% { transform: translateX(-25%); }
+            45% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            70% { transform: translateX(-50%); }
+            75% { transform: translateX(-75%); }
+            95% { transform: translateX(-75%); }
+            100% { transform: translateX(0%); }
+        }
+
+        /* ===== Footer ===== */
+        .footer {
+            background-color: rgb(3, 51, 106);
+            height: 50px;
+            width: 100%;
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+
+        .footer p {
+            margin: 0;
+            font-size: 20px;
+            color: white;
+            font-weight: normal;
+        }
+        /* About Section Styling */
+/* Container styling to keep content centered */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: center;
+}
+
+/* Container jo content ko center mein rakhta hai */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main Container */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Row setup for side-by-side look */
+.about-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-bottom: 50px;
+    flex-wrap: wrap; /* Mobile par automatic adjust hoga */
+}
+
+/* Image styling */
+.about-image {
+    flex: 1;
+    min-width: 300px;
+}
+
+.about-image img {
+    width: 100%;
+    border-radius: 15px;
+    box-shadow: 10px 10px 0px yellow; /* Creative accent */
+    display: block;
+}
+
+/* Text and List styling */
+.about-text, .about-list-container {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.about-text h2 {
+    color: rgb(3, 51, 106);
+    margin-bottom: 10px;
+}
+
+/* List Specific Styling */
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    background: #f9f9f9;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: 500;
+    transition: 0.3s;
+    border-left: 5px solid rgb(3, 51, 106);
+}
+
+.features-list li:hover {
+    transform: translateX(10px);
+    background: #fff8e1; /* Light yellow on hover */
+}
+
+.features-list li strong {
+    color: green;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .about-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .about-text, .about-list-container {
+        text-align: center;
+    }
+}
+/* Help Section Styling */
+.help-section {
+    padding: 60px 20px;
+    background-color: #f4f7fa;
+    text-align: center;
+    margin-top: 50px;
+}
+
+.help-box {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.help-box h2 {
+    color: rgb(3, 51, 106);
+    margin-bottom: 15px;
+}
+
+.help-box p {
+    color: #666;
+    margin-bottom: 25px;
+    font-size: 16px;
+}
+
+/* Contact Button Styling */
+.contact-button {
+    display: inline-block;
+    padding: 12px 30px;
+    background-color: rgb(3, 51, 106);
+    color: white;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.contact-button:hover {
+    background-color: yellow;
+    color: black;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="logo.png" alt="SHR">
+                <h2>SAINI HOTEL & RESTAURANT</h2>
+            </div>
+
+            <nav>
+                <ul>
+                    <li><a href="#home" id="selected">Home</a></li>
+                    <li><a href="Login.html">Login</a></li>
+                    <li><a href="New_Registration.html">New Registration</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="hero-section">
+        <div class="hero-slides">
+            <img src="https://cdn.prod.website-files.com/65097d6578d1dcb1e84efa23/65c471ec5952fe72a105f48b_Aloft%20Hotel%20Header%20Image.webp"
+                alt="Room 2">
+            <img src="https://d2e5ushqwiltxm.cloudfront.net/wp-content/uploads/sites/210/2023/05/17060736/Swissotel-Pool.jpg"
+            alt="Pool">
+            <img src="https://dq5r178u4t83b.cloudfront.net/wp-content/uploads/sites/125/2020/06/15182916/Sofitel-Dubai-Wafi-Luxury-Room-Bedroom-Skyline-View-Image1_WEB.jpg"
+                alt="Room 1">
+            <img src="https://theoterra.com/wp-content/uploads/2024/08/east-image3.jpg"
+            alt="Lobby">
+        </div>
+    </div>
+
+    <section class="about-section">
+    <div class="container">
+        <h1>Welcome to Saini Hotel & Restaurant</h1>
+        <p class="subtitle">Experience Luxury and Taste Like Never Before</p>
+
+        <div class="about-row">
+            <div class="about-image">
+                <img src="https://media-cdn.tripadvisor.com/media/photo-s/16/1a/ea/54/hotel-presidente-4s.jpg" alt="Hotel Exterior">
+            </div>
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <h3>Defining Luxury & Authentic Taste Since 1998</h3>
+                <p>
+                    Welcome to <b>Saini Hotel & Restaurant</b>, where hospitality meets excellence. Located in the heart of the city, we provide a perfect blend of modern luxury and traditional warmth.
+                </p>
+            </div>
+        </div>
+
+        <div class="about-row reverse">
+            <div class="about-image">
+                <img src="https://media.leonardo-hotels.com/static.leonardo-hotels.com/image/leonardohotelbucharestcitycenter_room_comfortdouble2_2022_4000x2600_7e18f254bc75491965d36cc312e8111f.jpg" alt="Hotel Room">
+            </div>
+            <div class="about-list-container">
+                <ul class="features-list">
+                    <li><strong>✔</strong> Premium Luxury Suites & Deluxe Rooms</li>
+                    <li><strong>✔</strong> Multi-Cuisine Restaurant with Expert Chefs</li>
+                    <li><strong>✔</strong> High-Speed Wi-Fi & 24/7 Room Service</li>
+                    <li><strong>✔</strong> Elegant Banquet Hall for Parties & Events</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="help-section">
+    <div class="help-box">
+        <h2>Need Help?</h2>
+        <p>Our support team is available 24/7 to assist you with any inquiries or booking concerns.</p>
+        <a href="Contact.html" class="contact-button">Contact Us Now</a>
+    </div>
+</div>
+
+    <footer class="footer">
+        <p>All Rights Reserved &copy; Rahul Saini</p>
+    </footer>
+
+</body>
+
+</html>
